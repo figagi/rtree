@@ -3,27 +3,22 @@ import logo from './logo.svg';
 import './App.css';
 import Routehub from './routehub';
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { store } from './store';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
         <p>
-          CRP <code> 脚手架</code> v0.0.1
+          hll <code> 子应用</code> v0.0.1
         </p>
-        <a
-          className="App-link"
-          href="https://crpjs.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          文档：敬请期待
-        </a>
       </header>
-
-      <Routehub />
-      {/* <Routehub /> */}
+      <Provider store={store}>
+        <BrowserRouter basename={window.__POWERED_BY_QIANKUN__ ? "/app/react" : "/"}>
+          <Routehub />
+        </BrowserRouter>
+      </Provider>
     </div>
   );
 }

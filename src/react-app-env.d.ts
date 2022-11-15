@@ -5,7 +5,7 @@
 declare namespace NodeJS {
   interface ProcessEnv {
     readonly NODE_ENV: 'development' | 'production' | 'test';
-    readonly CRP_ENV: 'dev' | 'test' | 'pre' | 'prod';
+    readonly HLL_ENV: 'dev' | 'test' | 'pre' | 'prod';
     readonly PUBLIC_URL: string;
   }
 }
@@ -18,6 +18,8 @@ declare interface Window {
 
   weixinSignUrl?: string;
   __POWERED_BY_QIANKUN__: any;
+  __webpack_public_path__: any;
+  __INJECTED_PUBLIC_PATH_BY_QIANKUN__: any;
 }
 
 declare module '*.avif' {
