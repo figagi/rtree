@@ -1,7 +1,8 @@
 module.exports = {
-  name: 'CRP-SEEDS',
+  name: 'CRP-RTREE',
   lintShow: false,
-  webpack: {
-
-  }
+  devServer: {
+    port: 6030,
+  },
+  webpack: {},
 };
