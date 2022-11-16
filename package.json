@@ -1,5 +1,5 @@
 {
-  "name": "crp-seeds",
+  "name": "rtree",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -23,7 +23,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "dev": "crp run start -e prod -m start",
+    "dev": "crp run start -e test -m start",
     "start": "crp run start -e test -m start",
     "build:dev": "crp run -e dev -m build",
     "build:test": "crp run -e test -m build",

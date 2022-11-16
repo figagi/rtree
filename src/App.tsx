@@ -11,11 +11,13 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p>
-          hll <code> 子应用</code> v0.0.1
+          RTREE <code> 子应用</code> v0.0.1
         </p>
       </header>
       <Provider store={store}>
-        <BrowserRouter basename={window.__POWERED_BY_QIANKUN__ ? "/app/react" : "/"}>
+        <BrowserRouter
+          basename={window.__POWERED_BY_QIANKUN__ ? '/app/rtree' : '/'}
+        >
           <Routehub />
         </BrowserRouter>
       </Provider>
