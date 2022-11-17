@@ -12,6 +12,8 @@ import {
   MailOutlined,
   PieChartOutlined,
 } from '@ant-design/icons';
+
+import { isMicroMode } from '@/utils/is';
 import { Route, Outlet, Link } from 'react-router-dom';
 import { Layout, Menu, Button } from 'antd';
 import React, { useState } from 'react';
@@ -22,9 +24,7 @@ function About() {
     <>
       <main>
         <h2>Who are we?</h2>
-        <p>
-          xxx
-        </p>
+        <p>xxx</p>
       </main>
       <nav>
         <Link to="/">Home</Link>
@@ -41,7 +41,6 @@ function getItem(
   children?: MenuItem[],
   type?: 'group',
 ): MenuItem {
-
   return {
     key,
     icon,
@@ -58,7 +57,10 @@ const items: MenuItem[] = [
   getItem('Navigation Two', 'sub2', <AppstoreOutlined />, [
     getItem('Option 9', '9'),
     getItem('Option 10', '10'),
-    getItem('Submenu', 'sub3', null, [getItem('Option 11', '11'), getItem('Option 12', '12')]),
+    getItem('Submenu', 'sub3', null, [
+      getItem('Option 11', '11'),
+      getItem('Option 12', '12'),
+    ]),
   ]),
 ];
 
@@ -66,48 +68,40 @@ const App: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false);
 
   return (
-    <Layout>
-      <Sider trigger={null} collapsible collapsed={collapsed}>
-        <div className="logo" />
-        <Menu
-          theme="dark"
-          mode="inline"
-          defaultSelectedKeys={['1']}
-          items={[
-            {
-              key: '1',
-              icon: <UserOutlined />,
-              label: 'nav 1',
-            },
-            {
-              key: '2',
-              icon: <VideoCameraOutlined />,
-              label: 'nav 2',
-            },
-            {
-              key: '3',
-              icon: <UploadOutlined />,
-              label: 'nav 3',
-            },
-          ]}
-        />
+    <Layout className="ant-layout-has-sider">
+      {isMicroMode ? null : (
+        <Sider trigger={null} collapsible collapsed={collapsed}>
+          <div className="logo" />
+          <Menu
+            defaultSelectedKeys={['1']}
+            defaultOpenKeys={['sub1']}
+            mode="inline"
+            theme="dark"
+            inlineCollapsed={collapsed}
+            items={items}
+          />
+        </Sider>
+      )}
 
-        <Menu
-          defaultSelectedKeys={['1']}
-          defaultOpenKeys={['sub1']}
-          mode="inline"
-          theme="dark"
-          inlineCollapsed={collapsed}
-          items={items}
-        />
-      </Sider>
-      <Layout className="site-layout">
-        <Header className="site-layout-background" style={{ padding: 0 }}>
-          {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
-            className: 'trigger',
-            onClick: () => setCollapsed(!collapsed),
-          })}
-        </Header>
+      <Layout
+        className="site-layout"
+        style={{
+          height: 'calc(100vh - 50px)',
+          overflowY: 'scroll',
+        }}
+      >
+        {isMicroMode ? null : (
+          <Header className="site-layout-background" style={{ padding: 0 }}>
+            {React.createElement(
+              collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
+              {
+                className: 'trigger',
+                onClick: () => setCollapsed(!collapsed),
+              },
+            )}
+          </Header>
+        )}
+
         <Content
           className="site-layout-background"
           style={{

@@ -6,16 +6,12 @@ export default function Home() {
   console.log('process.env', process.env);
   return (
     <>
-      <header className="App-header">
-        <p>
-          RTREE <code> 子应用</code> v0.0.1
-        </p>
-      </header>
-      {/* <Counter /> */}
-      currentEnv {process.env.CRP_ENV}
-      currentEnv-env: {process.env.CRP_NAME}
+      <main>
+        <h2>这里是一片树叶</h2>
+        <p>如果你来到了这里：这是基于LAND基座的一个子应用的leaf路由</p>
+      </main>
       <nav>
-        <Link to="/about">About</Link>
+        <Link to="/app/home">返回主页</Link>
       </nav>
     </>
   );

@@ -9,14 +9,9 @@ import { store } from './store';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          RTREE <code> 子应用</code> v0.0.1
-        </p>
-      </header>
       <Provider store={store}>
         <BrowserRouter
-          basename={window.__POWERED_BY_QIANKUN__ ? '/app/rtree' : '/'}
+          basename={window.__POWERED_BY_QIANKUN__ ? '/mf/rtree' : '/'}
         >
           <Routehub />
         </BrowserRouter>
